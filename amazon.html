@@ -1,61 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login with Amazon</title>
-
-  <!-- Amazon Login SDK -->
-  <script src="https://assets.loginwithamazon.com/sdk/na/login1.js"></script>
-</head>
-
-<body>
-  <h1>Login with Amazon Example</h1>
-  <button id="login-button" onclick="authorizeAmazon()">Login with Amazon</button>
-  <button id="logout-button" onclick="logoutAmazon()" style="display: none;">Logout</button>
-  <p id="status">You are not logged in.</p>
-
+  <script src="https://api-cdn.amazon.com/sdk/login1.js"></script>
   <script>
-    // Ensure the SDK is loaded and ready
     window.onAmazonLoginReady = function () {
       amazon.Login.setClientId('amzn1.application-oa2-client.763b2b90385546eaa671e9f8c4f1223a'); // Replace with your actual Client ID
     };
 
-    function authorizeAmazon() {
-      const options = {
-        scope: 'profile',
-        pkce: true, // Use PKCE for secure token exchange
-      };
-
-      amazon.Login.authorize(options, function (response) {
-        if (response.error) {
-          alert('OAuth error: ' + response.error);
-          return;
-        }
-
-        amazon.Login.retrieveToken(response.code, function (tokenResponse) {
-          if (tokenResponse.error) {
-            alert('Token retrieval error: ' + tokenResponse.error);
+    function loginWithAmazon() {
+      amazon.Login.authorize(
+        {
+          scope: 'profile',
+          redirect_uri: 'https://tubular-narwhal-af195a.netlify.app/amazon', // Your redirect URI
+        },
+        function (response) {
+          if (response.error) {
+            console.error('Login failed:', response.error);
             return;
           }
-
-          // Update UI with success message
-          document.getElementById('status').innerText = 'Logged in successfully!';
-          document.getElementById('login-button').style.display = 'none';
-          document.getElementById('logout-button').style.display = 'block';
-        });
-      });
-    }
-
-    function logoutAmazon() {
-      amazon.Login.logout();
-      alert('You have been logged out.');
-      document.getElementById('status').innerText = 'You are not logged in.';
-      document.getElementById('login-button').style.display = 'block';
-      document.getElementById('logout-button').style.display = 'none';
+          console.log('Authorization successful! Access Token:', response.access_token);
+        }
+      );
     }
   </script>
+</head>
+<body>
+  <button onclick="loginWithAmazon()">Login with Amazon</button>
 </body>
-
 </html>

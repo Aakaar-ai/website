@@ -4,10 +4,13 @@
   <script src="https://api-cdn.amazon.com/sdk/login1.js"></script>
   <script>
     window.onAmazonLoginReady = function () {
-      amazon.Login.setClientId('amzn1.application-oa2-client.763b2b90385546eaa671e9f8c4f1223a'); // Replace with your actual Client ID
+      const clientId = 'amzn1.application-oa2-client.763b2b90385546eaa671e9f8c4f1223a'; // Replace with actual Client ID
+      console.log('Setting Client ID:', clientId);
+      amazon.Login.setClientId(clientId);
     };
 
     function loginWithAmazon() {
+      console.log('Attempting to login...');
       amazon.Login.authorize(
         {
           scope: 'profile',

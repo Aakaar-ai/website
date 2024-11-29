@@ -1,4 +1,5 @@
 const axios = require('axios');
+require('dotenv').config();
 
      exports.handler = async (event) => {
        if (event.httpMethod !== 'GET') {
@@ -23,8 +24,8 @@ const axios = require('axios');
            new URLSearchParams({
              grant_type: 'authorization_code',
              code: code,
-             client_id: 'amzn1.application-oa2-client.763b2b90385546eaa671e9f8c4f1223a',
-             client_secret: 'amzn1.oa2-cs.v1.9c5d73f62acdf4e7e613c9f8d4426a3ff712b2fcce80c108c0353b6297427826',
+             client_id: process.env.CLIENT_ID,
+             client_secret: process.env.CLIENT_SECRET,
              redirect_uri: 'https://your-netlify-site.netlify.app/callback',
            }),
            {

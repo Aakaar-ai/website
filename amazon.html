@@ -16,7 +16,7 @@
       amazon.Login.authorize(
         {
           scope: 'profile',
-          redirect_uri: 'http//localhost:3000/callback', // Your redirect URI
+          redirect_uri: 'https://your-netlify-site.netlify.app/.netlify/functions/server', // Your redirect URI
         },
         function (response) {
           if (response.error) {

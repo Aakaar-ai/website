@@ -16,6 +16,7 @@
     }
 
     window.onAmazonLoginReady = async function () {
+      try {
       const clientId = await fetchClientId();
       if (!clientId) {
         console.error('Client ID is not set.');
@@ -25,40 +26,30 @@
       amazon.Login.setClientId(clientId);
       amazon.Login.setUseCookie(true);
       amazon.Login.setDebug(true);
+    }catch(e) {
+      console.error('Amazon Login SDK Error:', e);
+    }
     };
 
-    function loginWithAmazon() {
-  console.log('Attempting to login...');
-  try {
-    amazon.Login.authorize(
-      {
-        scope: 'profile',
-        redirect_uri: 'https://your-netlify-site.netlify.app/.netlify/functions/server', // Your redirect URI
-      },
-      function (response) {
-        if (!response) {
-          console.error('No response received from Amazon Login API.');
-          return;
-        }
-
-        if (response.error) {
-          console.error('Login failed:', response.error);
-          return;
-        }
-
-        if (!response.access_token) {
-          console.error('Authorization successful, but no access token received.');
-          return;
-        }
-
-        console.log('Authorization successful! Access Token:', response.access_token);
-
+    async function loginWithAmazon() {
+      try {
+        amazon.Login.authorize(
+          {
+            scope: 'profile',
+            redirect_uri: 'https://your-netlify-site.netlify.app/.netlify/functions/server',
+          },
+          function (response) {
+            if (response.error) {
+              console.error('Login failed:', response.error);
+              return;
+            }
+            console.log('Authorization successful! Access Token:', response.access_token);
+          }
+        );
+      } catch (err) {
+        console.error('Error during Amazon Login:', err);
       }
-    );
-  } catch (error) {
-    console.error('An error occurred while trying to log in:', error);
-  }
-}
+    }
   </script>
 </head>
 <body>

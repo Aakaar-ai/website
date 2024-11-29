@@ -3,11 +3,27 @@
 <head>
   <script src="https://api-cdn.amazon.com/sdk/login1.js"></script>
   <script>
-    window.onAmazonLoginReady = function () {
-      const clientId = 'amzn1.application-oa2-client.763b2b90385546eaa671e9f8c4f1223a'; // Replace with actual Client ID
+    async function fetchClientId() {
+      try {
+        const response = await fetch('/.netlify/functions/getClientId');
+        if (!response.ok) throw new Error('Failed to fetch client ID');
+        const { clientId } = await response.json();
+        return clientId;
+      } catch (error) {
+        console.error(error);
+        return null;
+      }
+    }
+
+    window.onAmazonLoginReady = async function () {
+      const clientId = await fetchClientId();
+      if (!clientId) {
+        console.error('Client ID is not set.');
+        return;
+      }
       console.log('Setting Client ID:', clientId);
       amazon.Login.setClientId(clientId);
-      amazon.Login.setUseCookie(true); 
+      amazon.Login.setUseCookie(true);
       amazon.Login.setDebug(true);
     };
 

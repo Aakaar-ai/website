@@ -28,21 +28,46 @@
     };
 
     function loginWithAmazon() {
-      console.log('Attempting to login...');
-      amazon.Login.authorize(
-        {
-          scope: 'profile',
-          redirect_uri: 'https://your-netlify-site.netlify.app/.netlify/functions/server', // Your redirect URI
-        },
-        function (response) {
-          if (response.error) {
-            console.error('Login failed:', response.error);
-            return;
-          }
-          console.log('Authorization successful! Access Token:', response.access_token);
+  console.log('Attempting to login...');
+  try {
+    amazon.Login.authorize(
+      {
+        scope: 'profile',
+        redirect_uri: 'https://your-netlify-site.netlify.app/.netlify/functions/server', // Your redirect URI
+      },
+      function (response) {
+        if (!response) {
+          console.error('No response received from Amazon Login API.');
+          return;
         }
-      );
-    }
+
+        if (response.error) {
+          console.error('Login failed:', response.error);
+          return;
+        }
+
+        if (!response.access_token) {
+          console.error('Authorization successful, but no access token received.');
+          return;
+        }
+
+        console.log('Authorization successful! Access Token:', response.access_token);
+
+        // Optionally, handle the token (e.g., send it to your server for further processing)
+        fetch('/.netlify/functions/handleToken', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ accessToken: response.access_token }),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log('Server Response:', data))
+          .catch((err) => console.error('Error sending token to server:', err));
+      }
+    );
+  } catch (error) {
+    console.error('An error occurred while trying to log in:', error);
+  }
+}
   </script>
 </head>
 <body>

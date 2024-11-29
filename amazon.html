@@ -16,7 +16,7 @@
       amazon.Login.authorize(
         {
           scope: 'profile',
-          redirect_uri: 'https://tubular-narwhal-af195a.netlify.app/amazon', // Your redirect URI
+          redirect_uri: 'http//localhost:3000/callback', // Your redirect URI
         },
         function (response) {
           if (response.error) {

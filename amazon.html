@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <script src="https://api-cdn.amazon.com/sdk/login1.js"></script>
-  <script src="https://na.account.amazon.com/sdk/amazon-login.min.js"></script>
   <link href="public/css/amazon.css" rel="stylesheet">
   <script>
     let CLIENT_ID = '';
@@ -26,16 +25,18 @@
     async function loginWithAmazon() {
       try {
         await fetchClientId();
-        console.log('CLIENT ID');
-        console.log(CLIENT_ID);
         if (!amazon || !amazon.Login) {
+            console.log('TEST');
             throw new Error('Amazon Login SDK is not loaded.');
         }
 
         amazon.Login.setClientId(CLIENT_ID);
+        console.log('TEST 2');
+        console.log(CLIENT_ID);
         amazon.Login.setUseCookie(true);
         amazon.Login.authorize(
           {
+            client_id: CLIENT_ID,
             scope: 'profile',
             redirect_uri: 'https://aakaarai.com/amazon'
           },

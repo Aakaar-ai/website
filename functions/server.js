@@ -26,7 +26,7 @@ require('dotenv').config();
              code: code,
              client_id: process.env.CLIENT_ID,
              client_secret: process.env.CLIENT_SECRET,
-             redirect_uri: 'https://www.aakaarai.com/.netlify/functions/server',
+             redirect_uri: 'https://www.aakaarai.com/amazon',
            }),
            {
              headers: {

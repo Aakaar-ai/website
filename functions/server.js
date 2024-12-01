@@ -26,7 +26,7 @@ require('dotenv').config();
              code: code,
              client_id: process.env.CLIENT_ID,
              client_secret: process.env.CLIENT_SECRET,
-             redirect_uri: 'https://aakaarai.com/amazon',
+             redirect_uri: 'https://na.account.amazon.com/sdk/2024-11-19-0219r0pr/topic.html?uri=https://aakaarai.com/amazon&proxy=amazon-proxy-https-na_account_amazon_com&topic=GyrloQKfmBwLDUz8&version=3',
            }),
            {
              headers: {

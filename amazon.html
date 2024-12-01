@@ -2,41 +2,35 @@
 <html lang="en">
 <head>
   <script src="https://api-cdn.amazon.com/sdk/login1.js"></script>
+  <link href="public/css/amazon.css" rel="stylesheet">
   <script>
+    let CLIENT_ID = '';
     async function fetchClientId() {
       try {
-        const response = await fetch('/.netlify/functions/getClientId');
-        if (!response.ok) throw new Error('Failed to fetch client ID');
-        const { clientId } = await response.json();
-        return clientId;
+          const response = await fetch('/.netlify/functions/getClientId');
+          console.log(response);
+          if (!response.ok) {
+            throw new Error(`Error fetching clientId: ${response.statusText}`);
+          }
+
+          const data = await response.json();
+          console.log('DATA')
+          console.log(data);
+          CLIENT_ID = data.clientId;
+          
       } catch (error) {
-        console.error(error);
-        return null;
+        console.error('Failed to fetch or set clientId:', error);
       }
     }
-
-    window.onAmazonLoginReady = async function () {
-      try {
-      const clientId = await fetchClientId();
-      if (!clientId) {
-        console.error('Client ID is not set.');
-        return;
-      }
-      console.log('Setting Client ID:', clientId);
-      amazon.Login.setClientId(clientId);
-      amazon.Login.setUseCookie(true);
-      amazon.Login.setDebug(true);
-    }catch(e) {
-      console.error('Amazon Login SDK Error:', e);
-    }
-    };
-
     async function loginWithAmazon() {
       try {
+        await fetchClientId();
+        amazon.Login.setClientId(CLIENT_ID);
+        amazon.Login.setUseCookie(true);
         amazon.Login.authorize(
           {
             scope: 'profile',
-            redirect_uri: 'https://tubular-narwhal-af195a.netlify.app/.netlify/functions/server',
+            redirect_uri: 'http://localhost:8888/amazon.html'
           },
           function (response) {
             if (response.error) {
@@ -44,6 +38,20 @@
               return;
             }
             console.log('Authorization successful! Access Token:', response.access_token);
+
+            amazon.Login.retrieveProfile(response.access_token, function(profileResponse) {
+            if (profileResponse.error) {
+              console.error('Failed to retrieve profile:', profileResponse.error);
+              return;
+            }
+            console.log('Profile retrieved:', profileResponse);
+
+            // Store the profile data in sessionStorage
+            sessionStorage.setItem('amazonProfile', JSON.stringify(profileResponse));
+
+            // Redirect to another page
+            window.location.href = 'welcome.html';  // Redirect to /home
+          });
           }
         );
       } catch (err) {
@@ -53,6 +61,12 @@
   </script>
 </head>
 <body>
-  <button onclick="loginWithAmazon()">Login with Amazon</button>
+  <img src="public/img/aakarai-logo-simple.svg" alt="Logo" class="logo">
+  <div class="login-card">
+  <button class="login-button" onclick="loginWithAmazon()">Login with Amazon</button>
+  </div>
+  <div class="footer">
+    <p>Powered by Amazon Login</p>
+  </div>
 </body>
 </html>

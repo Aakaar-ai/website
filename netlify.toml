@@ -6,9 +6,6 @@
   # Uncomment if you have build commands (e.g., npm run build)
   # command = "npm run build"
 
-[dev]
-  # Use this section for local development with `netlify dev`
-  framework = "static"
 
 [[redirects]]
   # Redirects to handle SPA routing or custom needs (optional)

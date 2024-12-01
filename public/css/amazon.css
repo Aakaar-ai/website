@@ -1,0 +1,98 @@
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #f7f7f7, #e1e1e1);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .login-card {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 40px;
+        width: 100%;
+        max-width: 400px;
+        min-height: 500px;  /* Ensures the card is at least 500px tall */
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);  /* Soft shadow for better depth */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: linear-gradient(145deg, #f7f7f7, #fff);  /* Gradient background */
+        position: relative;
+        overflow: hidden;
+        border: 1px solid #ddd;  /* Thin border for a subtle outline */
+      }
+      
+      /* Hover effect for the card */
+      .login-card:hover {
+        transform: translateY(-5px);  /* Slight lift on hover */
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);  /* Stronger shadow on hover */
+      }
+      
+      /* Optional: Add a decorative pattern */
+      .login-card::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');  /* Example pattern */
+        opacity: 0.1;  /* Subtle pattern overlay */
+        pointer-events: none;
+      }
+
+    .login-button {
+      background-color: #ff9900; /* Amazon's brand color */
+      color: #fff;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-button:hover {
+      background-color: #e68a00; /* Darker shade on hover */
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .login-button:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-button:focus {
+      outline: none;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      text-align: center;
+      font-size: 0.8em;
+      color: #aaa;
+    }
+
+    .logo {
+        position: absolute;
+        top: 30px;
+        left: 20px;
+        width: 150px;
+        height: auto;
+      }

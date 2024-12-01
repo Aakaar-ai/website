@@ -25,6 +25,12 @@
     async function loginWithAmazon() {
       try {
         await fetchClientId();
+        console.log('CLIENT ID');
+        console.log(CLIENT_ID);
+        if (!amazon || !amazon.Login) {
+            throw new Error('Amazon Login SDK is not loaded.');
+        }
+
         amazon.Login.setClientId(CLIENT_ID);
         amazon.Login.setUseCookie(true);
         amazon.Login.authorize(

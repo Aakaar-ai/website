@@ -26,7 +26,7 @@ require('dotenv').config();
              code: code,
              client_id: process.env.CLIENT_ID,
              client_secret: process.env.CLIENT_SECRET,
-             redirect_uri: 'http://localhost:8888/amazon.html',
+             redirect_uri: 'https://aakaarai.com/amazon',
            }),
            {
              headers: {

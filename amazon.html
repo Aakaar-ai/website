@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://na.account.amazon.com/sdk/amazon-login.min.js?cache-bust=20241128"></script>
+  <script src="https://na.account.amazon.com/sdk/amazon-login.min.js"></script>
   <link href="public/css/amazon.css" rel="stylesheet">
   <script>
     let CLIENT_ID = '';
@@ -35,7 +35,7 @@
         amazon.Login.setClientId(CLIENT_ID);
         console.log('TEST 2');
         console.log(CLIENT_ID);
-        amazon.Login.setUseCookie(true);
+        amazon.Login.setUseCookie(false);
         amazon.Login.authorize(
           {
             scope: 'profile',

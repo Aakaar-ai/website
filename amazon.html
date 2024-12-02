@@ -14,8 +14,6 @@
           }
 
           const data = await response.json();
-          console.log('DATA')
-          console.log(data);
           CLIENT_ID = data.clientId;
           
       } catch (error) {
@@ -30,11 +28,7 @@
             throw new Error('Amazon Login SDK is not loaded.');
         }
 
-        console.log('AMAZON');
-        console.log(amazon);
         amazon.Login.setClientId(CLIENT_ID);
-        console.log('TEST 2');
-        console.log(CLIENT_ID);
         amazon.Login.setUseCookie(false);
         amazon.Login.authorize(
           {
@@ -55,10 +49,8 @@
             }
             console.log('Profile retrieved:', profileResponse);
 
-            // Store the profile data in sessionStorage
             sessionStorage.setItem('amazonProfile', JSON.stringify(profileResponse));
 
-            // Redirect to another page
             window.location.href = 'welcome.html';  // Redirect to /home
           });
           }
@@ -72,7 +64,7 @@
 <body>
   <img src="public/img/aakarai-logo-simple.svg" alt="Logo" class="logo">
   <div class="login-card">
-  <button class="login-button" onclick="loginWithAmazon()">Login with Amazon</button>
+  <button class="login-button" onclick="loginWithAmazon()"></button>
   </div>
   <div class="footer">
     <p>Powered by Amazon Login</p>

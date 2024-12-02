@@ -8,7 +8,6 @@
     async function fetchClientId() {
       try {
           const response = await fetch('/.netlify/functions/getClientId');
-          console.log(response);
           if (!response.ok) {
             throw new Error(`Error fetching clientId: ${response.statusText}`);
           }
@@ -51,7 +50,7 @@
 
             sessionStorage.setItem('amazonProfile', JSON.stringify(profileResponse));
 
-            window.location.href = 'welcome.html';  // Redirect to /home
+            window.location.href = 'welcome.html';
           });
           }
         );

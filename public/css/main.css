@@ -2647,3 +2647,10 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 14px;
 }
+
+.header-privacy-statement {
+  font-size: 18px;
+  color: green;
+  margin-top: 8px;
+  text-align: center;
+}

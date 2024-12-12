@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8fafc"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="800" height="64" fill="#ffffff" filter="url(#dropShadow)"/>
+  
+  <!-- Filters -->
+  <defs>
+    <filter id="dropShadow" x="0" y="0" width="200%" height="200%">
+      <feOffset result="offOut" in="SourceAlpha" dx="0" dy="1"/>
+      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="1"/>
+      <feBlend in="SourceGraphic" in2="blurOut" mode="normal"/>
+    </filter>
+    <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Logo -->
+  <text x="40" y="42" font-family="Arial" font-weight="bold" font-size="24" fill="#1e293b">Analytics</text>
+  
+  <!-- User Menu -->
+  <circle cx="740" cy="32" r="20" fill="#e2e8f0"/>
+  <text x="740" y="38" font-family="Arial" font-size="14" fill="#64748b" text-anchor="middle">JD</text>
+  
+  <!-- Metric Cards -->
+  <g transform="translate(20,84)">
+    <!-- Total Users Card -->
+    <rect width="180" height="100" rx="8" fill="white" filter="url(#dropShadow)"/>
+    <text x="20" y="30" font-family="Arial" font-size="14" fill="#64748b">Total Users</text>
+    <text x="20" y="65" font-family="Arial" font-size="24" font-weight="bold" fill="#1e293b">24,832</text>
+    <text x="20" y="85" font-family="Arial" font-size="14" fill="#22c55e">↑ 12.3%</text>
+  </g>
+  
+  <g transform="translate(220,84)">
+    <!-- Active Users Card -->
+    <rect width="180" height="100" rx="8" fill="white" filter="url(#dropShadow)"/>
+    <text x="20" y="30" font-family="Arial" font-size="14" fill="#64748b">Active Users</text>
+    <text x="20" y="65" font-family="Arial" font-size="24" font-weight="bold" fill="#1e293b">18,472</text>
+    <text x="20" y="85" font-family="Arial" font-size="14" fill="#22c55e">↑ 8.1%</text>
+  </g>
+
+  <g transform="translate(420,84)">
+    <!-- Revenue Card -->
+    <rect width="180" height="100" rx="8" fill="white" filter="url(#dropShadow)"/>
+    <text x="20" y="30" font-family="Arial" font-size="14" fill="#64748b">Revenue</text>
+    <text x="20" y="65" font-family="Arial" font-size="24" font-weight="bold" fill="#1e293b">$147,832</text>
+    <text x="20" y="85" font-family="Arial" font-size="14" fill="#ef4444">↓ 3.2%</text>
+  </g>
+
+  <g transform="translate(620,84)">
+    <!-- Conversion Card -->
+    <rect width="160" height="100" rx="8" fill="white" filter="url(#dropShadow)"/>
+    <text x="20" y="30" font-family="Arial" font-size="14" fill="#64748b">Conversion</text>
+    <text x="20" y="65" font-family="Arial" font-size="24" font-weight="bold" fill="#1e293b">3.42%</text>
+    <text x="20" y="85" font-family="Arial" font-size="14" fill="#22c55e">↑ 0.8%</text>
+  </g>
+
+  <!-- Main Chart -->
+  <g transform="translate(20,204)">
+    <rect width="500" height="376" rx="8" fill="white" filter="url(#dropShadow)"/>
+    <text x="20" y="40" font-family="Arial" font-size="16" font-weight="bold" fill="#1e293b">User Growth</text>
+    
+    <!-- Chart Grid -->
+    <g transform="translate(40,80)">
+      <!-- Horizontal Grid Lines -->
+      <line x1="0" y1="0" x2="440" y2="0" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="0" y1="60" x2="440" y2="60" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="0" y1="120" x2="440" y2="120" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="0" y1="180" x2="440" y2="180" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="0" y1="240" x2="440" y2="240" stroke="#e2e8f0" stroke-width="1"/>
+      
+      <!-- Y-axis Labels -->
+      <text x="-10" y="5" font-family="Arial" font-size="12" fill="#64748b" text-anchor="end">25K</text>
+      <text x="-10" y="65" font-family="Arial" font-size="12" fill="#64748b" text-anchor="end">20K</text>
+      <text x="-10" y="125" font-family="Arial" font-size="12" fill="#64748b" text-anchor="end">15K</text>
+      <text x="-10" y="185" font-family="Arial" font-size="12" fill="#64748b" text-anchor="end">10K</text>
+      <text x="-10" y="245" font-family="Arial" font-size="12" fill="#64748b" text-anchor="end">5K</text>
+      
+      <!-- Chart Data -->
+      <path d="M0,180 L73,160 L146,140 L219,100 L292,80 L365,40 L438,20" 
+            fill="none" 
+            stroke="#3b82f6" 
+            stroke-width="2"/>
+      
+      <!-- Area under the line -->
+      <path d="M0,180 L73,160 L146,140 L219,100 L292,80 L365,40 L438,20 L438,240 L0,240 Z" 
+            fill="url(#chartGradient)"/>
+            
+      <!-- Data Points -->
+      <circle cx="0" cy="180" r="4" fill="#3b82f6"/>
+      <circle cx="73" cy="160" r="4" fill="#3b82f6"/>
+      <circle cx="146" cy="140" r="4" fill="#3b82f6"/>
+      <circle cx="219" cy="100" r="4" fill="#3b82f6"/>
+      <circle cx="292" cy="80" r="4" fill="#3b82f6"/>
+      <circle cx="365" cy="40" r="4" fill="#3b82f6"/>
+      <circle cx="438" cy="20" r="4" fill="#3b82f6"/>
+      
+      <!-- X-axis Labels -->
+      <text x="0" y="260" font-family="Arial" font-size="12" fill="#64748b">Jan</text>
+      <text x="73" y="260" font-family="Arial" font-size="12" fill="#64748b">Feb</text>
+      <text x="146" y="260" font-family="Arial" font-size="12" fill="#64748b">Mar</text>
+      <text x="219" y="260" font-family="Arial" font-size="12" fill="#64748b">Apr</text>
+      <text x="292" y="260" font-family="Arial" font-size="12" fill="#64748b">May</text>
+      <text x="365" y="260" font-family="Arial" font-size="12" fill="#64748b">Jun</text>
+      <text x="438" y="260" font-family="Arial" font-size="12" fill="#64748b">Jul</text>
+    </g>
+  </g>
+
+  <!-- Side Panel -->
+  <g transform="translate(540,204)">
+    <rect width="240" height="376" rx="8" fill="white" filter="url(#dropShadow)"/>
+    <text x="20" y="40" font-family="Arial" font-size="16" font-weight="bold" fill="#1e293b">Top Channels</text>
+    
+    <!-- Channel List -->
+    <g transform="translate(20,60)">
+      <!-- Direct -->
+      <text x="0" y="20" font-family="Arial" font-size="14" fill="#1e293b">Direct</text>
+      <text x="180" y="20" font-family="Arial" font-size="14" fill="#1e293b" text-anchor="end">42.8%</text>
+      <rect x="0" y="30" width="200" height="4" rx="2" fill="#f1f5f9"/>
+      <rect x="0" y="30" width="171" height="4" rx="2" fill="#3b82f6"/>
+      
+      <!-- Organic Search -->
+      <text x="0" y="70" font-family="Arial" font-size="14" fill="#1e293b">Organic Search</text>
+      <text x="180" y="70" font-family="Arial" font-size="14" fill="#1e293b" text-anchor="end">28.3%</text>
+      <rect x="0" y="80" width="200" height="4" rx="2" fill="#f1f5f9"/>
+      <rect x="0" y="80" width="113" height="4" rx="2" fill="#3b82f6"/>
+      
+      <!-- Referral -->
+      <text x="0" y="120" font-family="Arial" font-size="14" fill="#1e293b">Referral</text>
+      <text x="180" y="120" font-family="Arial" font-size="14" fill="#1e293b" text-anchor="end">16.4%</text>
+      <rect x="0" y="130" width="200" height="4" rx="2" fill="#f1f5f9"/>
+      <rect x="0" y="130" width="66" height="4" rx="2" fill="#3b82f6"/>
+      
+      <!-- Social -->
+      <text x="0" y="170" font-family="Arial" font-size="14" fill="#1e293b">Social</text>
+      <text x="180" y="170" font-family="Arial" font-size="14" fill="#1e293b" text-anchor="end">8.2%</text>
+      <rect x="0" y="180" width="200" height="4" rx="2" fill="#f1f5f9"/>
+      <rect x="0" y="180" width="33" height="4" rx="2" fill="#3b82f6"/>
+      
+      <!-- Email -->
+      <text x="0" y="220" font-family="Arial" font-size="14" fill="#1e293b">Email</text>
+      <text x="180" y="220" font-family="Arial" font-size="14" fill="#1e293b" text-anchor="end">4.3%</text>
+      <rect x="0" y="230" width="200" height="4" rx="2" fill="#f1f5f9"/>
+      <rect x="0" y="230" width="17" height="4" rx="2" fill="#3b82f6"/>
+    </g>
+  </g>
+</svg>

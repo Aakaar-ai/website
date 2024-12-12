@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Definitions -->
+  <defs>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#4f46e5;stop-opacity:0"/>
+    </linearGradient>
+    <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:0"/>
+    </linearGradient>
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#22c55e;stop-opacity:0"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8fafc"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="800" height="64" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="40" y="42" font-family="Arial" font-weight="bold" font-size="24" fill="#1e293b">Amazon Analytics</text>
+  
+  <!-- Time Period Selector -->
+  <g transform="translate(580,20)">
+    <rect x="0" y="0" width="200" height="40" rx="20" fill="#f8fafc"/>
+    <text x="20" y="25" font-family="Arial" font-size="14" fill="#64748b">Last 30 Days ▼</text>
+  </g>
+
+  <!-- Performance Overview - Donut Charts Row -->
+  <!-- Adjusted spacing between donuts and consistent margins -->
+  <g transform="translate(20,84)">
+    <!-- ACOS Donut -->
+    <g transform="translate(40,0)">
+      <circle cx="90" cy="90" r="70" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="2"/>
+      <path d="M90,20 A70,70 0 0,1 150,110 L90,90 Z" fill="#4f46e5"/>
+      <text x="90" y="80" font-family="Arial" font-size="14" fill="#64748b" text-anchor="middle">ACOS</text>
+      <text x="90" y="105" font-family="Arial" font-size="22" font-weight="bold" fill="#1e293b" text-anchor="middle">24%</text>
+    </g>
+    
+    <!-- CTR Donut -->
+    <g transform="translate(280,0)">
+      <circle cx="90" cy="90" r="70" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="2"/>
+      <path d="M90,20 A70,70 0 0,1 155,65 L90,90 Z" fill="#f97316"/>
+      <text x="90" y="80" font-family="Arial" font-size="14" fill="#64748b" text-anchor="middle">CTR</text>
+      <text x="90" y="105" font-family="Arial" font-size="22" font-weight="bold" fill="#1e293b" text-anchor="middle">3.8%</text>
+    </g>
+    
+    <!-- Conversion Donut -->
+    <g transform="translate(520,0)">
+      <circle cx="90" cy="90" r="70" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="2"/>
+      <path d="M90,20 A70,70 0 0,1 158,90 L90,90 Z" fill="#22c55e"/>
+      <text x="90" y="80" font-family="Arial" font-size="14" fill="#64748b" text-anchor="middle">Conversion</text>
+      <text x="90" y="105" font-family="Arial" font-size="22" font-weight="bold" fill="#1e293b" text-anchor="middle">18%</text>
+    </g>
+  </g>
+
+  <!-- Market Share Wave Chart -->
+  <!-- Adjusted position and width to align with cards above -->
+  <g transform="translate(20,264)">
+    <rect width="760" height="160" rx="8" fill="white" filter="url(#shadow)"/>
+    <text x="20" y="30" font-family="Arial" font-size="16" font-weight="bold" fill="#1e293b">Market Share Trend</text>
+    
+    <!-- Curved Line Chart - Adjusted width to match container -->
+    <path d="M40,100 C140,80 240,120 340,90 C440,60 540,110 640,80 C690,65 730,80 740,60" 
+          fill="none" 
+          stroke="#4f46e5" 
+          stroke-width="3"/>
+    <path d="M40,100 C140,80 240,120 340,90 C440,60 540,110 640,80 C690,65 730,80 740,60 L740,140 L40,140 Z" 
+          fill="url(#blueGradient)"/>
+  </g>
+
+  <!-- Bottom Row Charts - Adjusted to be equal width and aligned -->
+  <!-- Campaign Performance Heatmap -->
+  <g transform="translate(20,444)">
+    <rect width="370" height="136" rx="8" fill="white" filter="url(#shadow)"/>
+    <text x="20" y="30" font-family="Arial" font-size="16" font-weight="bold" fill="#1e293b">Campaign Performance</text>
+    
+    <!-- Heatmap Grid - Adjusted spacing -->
+    <g transform="translate(20,50)">
+      <rect x="0" y="0" width="62" height="32" rx="4" fill="#4f46e5" fill-opacity="0.8"/>
+      <rect x="72" y="0" width="62" height="32" rx="4" fill="#4f46e5" fill-opacity="0.6"/>
+      <rect x="144" y="0" width="62" height="32" rx="4" fill="#4f46e5" fill-opacity="0.4"/>
+      <rect x="216" y="0" width="62" height="32" rx="4" fill="#4f46e5" fill-opacity="0.7"/>
+      <rect x="288" y="0" width="62" height="32" rx="4" fill="#4f46e5" fill-opacity="0.5"/>
+      
+      <rect x="0" y="42" width="62" height="32" rx="4" fill="#4f46e5" fill-opacity="0.3"/>
+      <rect x="72" y="42" width="62" height="32" rx="4" fill="#4f46e5" fill-opacity="0.9"/>
+      <rect x="144" y="42" width="62" height="32" rx="4" fill="#4f46e5" fill-opacity="0.5"/>
+      <rect x="216" y="42" width="62" height="32" rx="4" fill="#4f46e5" fill-opacity="0.4"/>
+      <rect x="288" y="42" width="62" height="32" rx="4" fill="#4f46e5" fill-opacity="0.8"/>
+    </g>
+  </g>
+
+  <!-- Keywords Performance Bubble Chart -->
+  <g transform="translate(410,444)">
+    <rect width="370" height="136" rx="8" fill="white" filter="url(#shadow)"/>
+    <text x="20" y="30" font-family="Arial" font-size="16" font-weight="bold" fill="#1e293b">Top Keywords</text>
+    
+    <!-- Bubble Chart - Adjusted positioning -->
+    <circle cx="90" cy="80" r="30" fill="#f97316" fill-opacity="0.7"/>
+    <circle cx="170" cy="90" r="25" fill="#f97316" fill-opacity="0.6"/>
+    <circle cx="240" cy="70" r="20" fill="#f97316" fill-opacity="0.5"/>
+    <circle cx="290" cy="90" r="15" fill="#f97316" fill-opacity="0.4"/>
+    <circle cx="330" cy="75" r="10" fill="#f97316" fill-opacity="0.3"/>
+  </g>
+</svg>

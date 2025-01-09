@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <script src="https://api-cdn.amazon.com/sdk/login1.js"></script>
   <link href="public/css/amazon.css" rel="stylesheet">
@@ -7,14 +8,14 @@
     let CLIENT_ID = '';
     async function fetchClientId() {
       try {
-          const response = await fetch('/.netlify/functions/getClientId');
-          if (!response.ok) {
-            throw new Error(`Error fetching clientId: ${response.statusText}`);
-          }
+        const response = await fetch('/.netlify/functions/getClientId');
+        if (!response.ok) {
+          throw new Error(`Error fetching clientId: ${response.statusText}`);
+        }
 
-          const data = await response.json();
-          CLIENT_ID = data.clientId;
-          
+        const data = await response.json();
+        CLIENT_ID = data.clientId;
+
       } catch (error) {
         console.error('Failed to fetch or set clientId:', error);
       }
@@ -23,8 +24,8 @@
       try {
         await fetchClientId();
         if (!amazon || !amazon.Login) {
-            console.log('TEST');
-            throw new Error('Amazon Login SDK is not loaded.');
+          console.log('TEST');
+          throw new Error('Amazon Login SDK is not loaded.');
         }
 
         amazon.Login.setClientId(CLIENT_ID);
@@ -40,18 +41,19 @@
               return;
             }
             console.log('Authorization successful! Access Token:', response.access_token);
+            console.log('Refresh Token:'.response.refresh_token);
 
-            amazon.Login.retrieveProfile(response.access_token, function(profileResponse) {
-            if (profileResponse.error) {
-              console.error('Failed to retrieve profile:', profileResponse.error);
-              return;
-            }
-            console.log('Profile retrieved:', profileResponse);
+            amazon.Login.retrieveProfile(response.access_token, function (profileResponse) {
+              if (profileResponse.error) {
+                console.error('Failed to retrieve profile:', profileResponse.error);
+                return;
+              }
+              console.log('Profile retrieved:', profileResponse);
 
-            sessionStorage.setItem('amazonProfile', JSON.stringify(profileResponse));
+              sessionStorage.setItem('amazonProfile', JSON.stringify(profileResponse));
 
-            window.location.href = 'welcome.html';
-          });
+              window.location.href = 'welcome.html';
+            });
           }
         );
       } catch (err) {
@@ -60,13 +62,15 @@
     }
   </script>
 </head>
+
 <body>
   <img src="public/img/aakarai-logo-simple.svg" alt="Logo" class="logo">
   <div class="login-card">
-  <button class="login-button" onclick="loginWithAmazon()"></button>
+    <button class="login-button" onclick="loginWithAmazon()"></button>
   </div>
   <div class="footer">
     <p>Powered by Amazon Login</p>
   </div>
 </body>
+
 </html>

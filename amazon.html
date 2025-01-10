@@ -41,7 +41,9 @@
               return;
             }
             console.log('Authorization successful! Access Token:', response.access_token);
-            console.log('Refresh Token:', response);
+            console.log('Access code:', response.access_code);
+            // Log the full token response to find the refresh token
+            console.log('Full Authorization Response:', JSON.stringify(response, null, 2));
 
             amazon.Login.retrieveProfile(response.access_token, function (profileResponse) {
               if (profileResponse.error) {

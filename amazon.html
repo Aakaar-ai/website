@@ -33,6 +33,7 @@
         amazon.Login.authorize(
           {
             scope: 'profile',
+            response_type: 'code',
             redirect_uri: 'https://aakaarai.com/amazon'
           },
           function (response) {
